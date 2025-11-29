@@ -37,6 +37,3 @@ The system features a dual-mode operation: a **Test Mode** for validating driver
 2.  **Transmission:** Data is packetized and sent via Serial (9600 baud) to the host computer.
 3.  **Processing:** The Python Flask server parses the serial packets.
 4.  **Visualization:** The web frontend updates the gauge cluster and game character in real-time using AJAX/WebSockets.
-
-## 📸 Screenshots
-*(Add a screenshot of your Web Interface or a photo of the Steering Rig here)*
