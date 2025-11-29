@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino Sensor System</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-microchip"></i> AUTOMATED DRIVING TEST RESULTS</h1>
+            <p>Auto-Connect Test System and Racing Game</p>
+        </header>
+        
+        <div class="card">
+            <h2 class="card-title"><i class="fas fa-plug"></i> Connection Status</h2>
+            <div class="connection-status">
+                <div id="statusIndicator" class="status-indicator connecting"></div>
+                <span id="connectionStatus">Connecting to Arduino...</span>
+            </div>
+        </div>
+        
+        <div class="tab-container">
+            <div class="tab active" onclick="switchTab('test')">Test System</div>
+            <div class="tab" onclick="switchTab('game')">Racing Game</div>
+        </div>
+        
+        <!-- Test System Section -->
+        <div id="test-section" class="content-section active">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-tasks"></i> Test System</h2>
+                <div class="btn-container">
+                    <button class="btn btn-primary" onclick="runTest('1')">
+                        <i class="fas fa-play-circle"></i> Run Full Test
+                    </button>
+                    <button class="btn btn-secondary" onclick="runTest('2')">
+                        <i class="fas fa-hand-paper"></i> Test Steering Sensors
+                    </button>
+                    <button class="btn btn-tertiary" onclick="runTest('3')">
+                        <i class="fas fa-sync-alt"></i> Test Rotation Sensor
+                    </button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-terminal"></i> Test Console</h2>
+                <div id="console" class="console">
+                    <div class="console-line">>> Initializing system...</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Game Section -->
+        <div id="game-section" class="content-section">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-gamepad"></i> Racing Game</h2>
+                <div class="btn-container">
+                    <button class="btn btn-game" onclick="startGame()">
+                        <i class="fas fa-play"></i> Start Game
+                    </button>
+                    <button class="btn btn-secondary" onclick="stopGame()">
+                        <i class="fas fa-stop"></i> Stop Game
+                    </button>
+                </div>
+                
+                <div class="sensor-display">
+                    <div id="leftSensor" class="sensor">
+                        <div>Left Hand</div>
+                        <div id="leftValue" class="sensor-value">OFF</div>
+                    </div>
+                    <div id="rightSensor" class="sensor">
+                        <div>Right Hand</div>
+                        <div id="rightValue" class="sensor-value">OFF</div>
+                    </div>
+                    <div class="sensor">
+                        <div>Steering</div>
+                        <div id="steeringValue" class="sensor-value">0.00</div>
+                    </div>
+                </div>
+                
+                <div class="game-container">
+                    <canvas id="gameCanvas" width="800" height="400"></canvas>
+                    <div id="gameOverlay" class="game-overlay">
+                        <h2>RACING GAME</h2>
+                        <p>Press START GAME to begin</p>
+                    </div>
+                </div>
+                
+                <div class="status-panel">
+                    <div class="status-item">
+                        <div class="status-title">SPEED</div>
+                        <div id="speedValue" class="status-value">0</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-title">SCORE</div>
+                        <div id="scoreValue" class="status-value">0</div>
+                    </div>
+                    <div class="status-item">
+                        <div class="status-title">DISTANCE</div>
+                        <div id="distanceValue" class="status-value">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Automated Driving Test Results | Auto-Connect Test and Game | Abdulrahman Adil | © 2025</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='game.js') }}"></script>
+</body>
+</html>
+
+
+
