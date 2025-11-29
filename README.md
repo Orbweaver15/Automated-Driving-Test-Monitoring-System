@@ -36,4 +36,4 @@ The system features a dual-mode operation: a **Test Mode** for validating driver
 1.  **Data Acquisition:** The Arduino polls the AS5600 for angle data and IR sensors for grip status.
 2.  **Transmission:** Data is packetized and sent via Serial (9600 baud) to the host computer.
 3.  **Processing:** The Python Flask server parses the serial packets.
-4.  **Visualization:** The web frontend updates the gauge cluster and game character in real-time using AJAX/WebSockets.
+4.  **Visualization:** The web frontend updates the gauge cluster and game character in real-time.
